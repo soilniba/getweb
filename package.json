@@ -1,0 +1,23 @@
+{
+  "name": "getweb",
+  "description": "aaa",
+  "author": "bbb",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=8.0",
+    "npm": ">=5.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "fs-extra": "^7.0.0",
+    "jsonfile": "^4.0.0",
+    "moment": "^2.22.2",
+    "requestify": "^0.2.5"
+  },
+  "devDependencies": {}
+}
