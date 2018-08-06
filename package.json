@@ -4,7 +4,8 @@
   "author": "bbb",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "getdata": "node getdata.js",
+    "webserver": "node webserver.js"
   },
   "engines": {
     "node": ">=8.0",

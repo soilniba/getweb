@@ -1,5 +1,5 @@
-var express = require('express')
-var app = express()
+// var express = require('express')
+// var app = express()
 // var bodyParser = require('body-parser')
 var requestify = require('requestify')
 // var fse = require('fs-extra')
@@ -75,6 +75,6 @@ function GetUrl(szUrl){
     });
 }
 
-app.use('/public', express.static('public'))
+// app.use('/public', express.static('public'))
 
-app.listen(8081)
+// app.listen(8081)
