@@ -3,33 +3,27 @@
 <html>
 <head lang="zh-cn">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>测试一下</title>
+    <title>1元=???金</title>
 </head>
 <body>
     <script src="http://code.jquery.com/jquery-3.1.1.min.js" style=""></script>
     <script src="http://code.highcharts.com/stock/highstock.js" style=""></script>
-    <!-- <script src="http://code.highcharts.com/stock/modules/exporting.js" style=""></script>
-    <script src="http://code.highcharts.com/stock/modules/export-data.js" style=""></script> -->
     
-    <div id="container" style="height: 400px; min-width: 310px"></div>
+    <div id="shuangmeng" style="height: 400px; min-width: 310px"></div>
+    <div id="weimanxua" style="height: 400px; min-width: 310px"></div>
       
     <script type="text/javascript" style="">
-            
-      $.getJSON('http://127.0.0.1:8081/public/data.json', function (data) {
+      $.getJSON('/public/shuangmeng.json', function (data) {
           // Create the chart
-          Highcharts.stockChart('container', {
-      
-      
+          Highcharts.stockChart('shuangmeng', {
               rangeSelector: {
                   selected: 1
               },
-      
               title: {
-                  text: '没有标题'
+                  text: '双梦'
               },
-      
               series: [{
-                  name: '价格',
+                  name: '金价',
                   data: data,
                   tooltip: {
                       valueDecimals: 2
@@ -37,7 +31,24 @@
               }]
           });
       });
-      
+      $.getJSON('/public/weimanxua.json', function (data) {
+          // Create the chart
+          Highcharts.stockChart('weimanxua', {
+              rangeSelector: {
+                  selected: 1
+              },
+              title: {
+                  text: '唯满侠'
+              },
+              series: [{
+                  name: '金价',
+                  data: data,
+                  tooltip: {
+                      valueDecimals: 2
+                  }
+              }]
+          });
+      });
     </script>
 </body>
 </html>
