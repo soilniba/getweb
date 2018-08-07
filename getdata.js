@@ -55,7 +55,7 @@ function GetUrl(szUrl, szJsonPath){
         const szNum = szText.match(/[^=][0-9.]+/g).toString()
         console.dir(szNum)
         var tJson = jsonfile.readFileSync(szJsonPath)
-        tJson.push([Date.now(), parseInt(szNum)])
+        tJson.push([Date.now() + 8 * 60 * 60 * 1000, parseInt(szNum)])
         jsonfile.writeFile(szJsonPath, tJson, function (err) {
             if (err) {
                 console.error(err)
