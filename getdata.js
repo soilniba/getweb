@@ -52,15 +52,19 @@ function GetUrl(szUrl, szJsonPath){
 		// console.info(tResponse.body)
 		const $ = cheerio.load(tResponse.body)
         const szText = $('#divCommodityLst').children('ul').first().children('li.sp_li1').children('h6').children('span').first().text()
-        const szNum = szText.match(/[^=][0-9.]+/g).toString()
-        console.dir(szNum)
-        var tJson = jsonfile.readFileSync(szJsonPath)
-        tJson.push([Date.now() + 8 * 60 * 60 * 1000, parseInt(szNum)])
-        jsonfile.writeFile(szJsonPath, tJson, function (err) {
-            if (err) {
-                console.error(err)
-            }
-        })
+        const nNum = parseInt(szText.match(/[^=][0-9.]+/g).toString())
+        console.dir(nNum)
+		var tJson = jsonfile.readFileSync(szJsonPath)
+		if (typeof(nNum) == 'number' && nNum > 100) {
+			tJson.push([Date.now() + 8 * 60 * 60 * 1000, nNum])
+			jsonfile.writeFile(szJsonPath, tJson, function (err) {
+				if (err) {
+					console.error(err)
+				}
+			})
+		} else {
+			setTimeout(GetUrl, 60 * 1000, szUrl, szJsonPath)
+		}
     })
     .fail(function(tResponse) {
 		console.dir(tResponse)
