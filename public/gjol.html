@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>古网金价</title>
+</head>
+<body>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js" style=""></script>
+    <script src="http://code.highcharts.com/stock/highstock.js" style=""></script>
+    
+    <div id="shuangmeng" style="height: 400px; min-width: 310px"></div>
+    <div id="weimanxua" style="height: 400px; min-width: 310px"></div>
+      
+    <script type="text/javascript" style="">
+        Highcharts.setOptions({
+            lang: {
+                months: [
+                    '一月', '二月', '三月', '四月',
+                    '五月', '六月', '七月', '八月',
+                    '九月', '十月', '十一月', '十二月'
+                ],
+                shortMonths: [
+                    '1月', '2月', '3月', '4月',
+                    '5月', '6月', '7月', '8月',
+                    '9月', '10月', '11月', '12月'
+                ],
+                weekdays: [
+                    '周日', '周一', '周二', '周三', '周四',
+                    '周五', '周六'
+                ],
+            }
+        });
+      $.getJSON('/public/taihuashan.json', function (data) {
+          // Create the chart
+          Highcharts.stockChart('taihuashan', {
+              rangeSelector: {
+                  selected: 1
+              },
+              title: {
+                  text: '太华山'
+              },
+              series: [{
+                  name: '金价',
+                  data: data,
+              }],
+              tooltip: {
+                      valueDecimals: 0,
+                      valueSuffix: ' 金',
+                      xDateFormat: '%m月%d日 %H:%m',
+                  },
+              xAxis: {
+                    dateTimeLabelFormats: {
+                        day: '%b%e日'
+                    }
+                },
+          });
+      });
+      $.getJSON('/public/butianling.json', function (data) {
+          // Create the chart
+          Highcharts.stockChart('butianling', {
+              rangeSelector: {
+                  selected: 1
+              },
+              title: {
+                  text: '补天岭'
+              },
+              series: [{
+                  name: '金价',
+                  data: data,
+                  tooltip: {
+                      valueDecimals: 0,
+                      valueSuffix: ' 金',
+                      xDateFormat: '%m月%d日 %H:%m',
+                  }
+              }],
+              xAxis: {
+                    dateTimeLabelFormats: {
+                        day: '%b%e日'
+                    }
+                },
+          });
+      });
+      $.getJSON('/public/yingxianmen.json', function (data) {
+          // Create the chart
+          Highcharts.stockChart('yingxianmen', {
+              rangeSelector: {
+                  selected: 1
+              },
+              title: {
+                  text: '迎仙门'
+              },
+              series: [{
+                  name: '金价',
+                  data: data,
+                  tooltip: {
+                      valueDecimals: 0,
+                      valueSuffix: ' 金',
+                      xDateFormat: '%m月%d日 %H:%m',
+                  }
+              }],
+              xAxis: {
+                    dateTimeLabelFormats: {
+                        day: '%b%e日'
+                    }
+                },
+          });
+      });
+      $.getJSON('/public/liuyuecheng.json', function (data) {
+          // Create the chart
+          Highcharts.stockChart('liuyuecheng', {
+              rangeSelector: {
+                  selected: 1
+              },
+              title: {
+                  text: '流月城'
+              },
+              series: [{
+                  name: '金价',
+                  data: data,
+                  tooltip: {
+                      valueDecimals: 0,
+                      valueSuffix: ' 金',
+                      xDateFormat: '%m月%d日 %H:%m',
+                  }
+              }],
+              xAxis: {
+                    dateTimeLabelFormats: {
+                        day: '%b%e日'
+                    }
+                },
+          });
+      });
+    </script>
+    你好呀
+</body>
+</html>
