@@ -56,7 +56,7 @@ function GetUrl(szUrl, szJsonPath, nRetryNum){
 		// console.info(tResponse.body)
 		const $ = cheerio.load(tResponse.body)
 		const szText = $('#divCommodityLst').children('ul').first().children('li.sp_li1').children('h6').children('span').first().text()
-		const nNum = parseFloat(szText.match(/(?<=\=)([0-9\.]+)/g))
+		const nNum = parseFloat(szText.match(/([0-9\.]+)/g)[1])
         console.dir(nNum)
 		var tJson = jsonfile.readFileSync(szJsonPath)
 		if (typeof(nNum) == 'number' && nNum > 0) {
