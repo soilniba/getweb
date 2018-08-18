@@ -55,11 +55,11 @@ function GetUrl(szUrl, szJsonPath){
 		// console.dir(tResponse)
 		// console.info(tResponse.body)
 		const $ = cheerio.load(tResponse.body)
-        const szText = $('#divCommodityLst').children('ul').first().children('li.sp_li1').children('h6').children('span').first().text()
-        const nNum = parseInt(szText.match(/[^=][0-9.]+/g).toString())
+		const szText = $('#divCommodityLst').children('ul').first().children('li.sp_li1').children('h6').children('span').first().text()
+		const nNum = parseFloat(szText.match(/(?<=\=)([0-9\.]+)/g))
         console.dir(nNum)
 		var tJson = jsonfile.readFileSync(szJsonPath)
-		if (typeof(nNum) == 'number' && nNum > 100) {
+		if (typeof(nNum) == 'number' && nNum > 0) {
 			tJson.push([Date.now() + 8 * 60 * 60 * 1000, nNum])
 			jsonfile.writeFile(szJsonPath, tJson, function (err) {
 				if (err) {
