@@ -44,7 +44,7 @@ function main(tLine){
     // }, oneSecond)
 }
 
-function GetUrl(szUrl, szJsonPath){
+function GetUrl(szUrl, szJsonPath, nRetryNum){
     //查询服务器状态
     requestify.request(szUrl, {
         method: 'GET',
@@ -67,7 +67,13 @@ function GetUrl(szUrl, szJsonPath){
 				}
 			})
 		} else {
-			setTimeout(GetUrl, 60 * 1000, szUrl, szJsonPath)
+			if (!nRetryNum){
+				nRetryNum = 0
+			}
+			nRetryNum++
+			if (nRetryNum < 5){
+				setTimeout(GetUrl, 60 * 1000, szUrl, szJsonPath, nRetryNum)
+			}
 		}
     })
     .fail(function(tResponse) {
