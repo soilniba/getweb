@@ -11,6 +11,7 @@
     
     <div id="shuangmeng" style="height: 400px; min-width: 310px"></div>
     <div id="weimanxua" style="height: 400px; min-width: 310px"></div>
+    <div id="dielianhua" style="height: 400px; min-width: 310px"></div>
       
     <script type="text/javascript" style="">
         Highcharts.setOptions({
@@ -64,6 +65,31 @@
               },
               title: {
                   text: '唯满侠'
+              },
+              series: [{
+                  name: '金价',
+                  data: data,
+                  tooltip: {
+                      valueDecimals: 0,
+                      valueSuffix: ' 金',
+                      xDateFormat: '%m月%d日 %H:%m',
+                  }
+              }],
+              xAxis: {
+                    dateTimeLabelFormats: {
+                        day: '%b%e日'
+                    }
+                },
+          });
+      });
+      $.getJSON('/public/dielianhua.json', function (data) {
+          // Create the chart
+          Highcharts.stockChart('dielianhua', {
+              rangeSelector: {
+                  selected: 1
+              },
+              title: {
+                  text: '蝶恋花'
               },
               series: [{
                   name: '金价',
