@@ -41,9 +41,9 @@ function main(tLine){
 		if(tJson[i][1] < 1){
 			console.info(tJson[i])
 			tJson.splice(i, 1)
-		}
-		if(tLine.nValueMax && tJson[i][1] > tLine.nValueMax){
+		}else if(tLine.nValueMax && tJson[i][1] > tLine.nValueMax){
 			console.info(tJson[i])
+			tJson.splice(i, 1)
 		}
 	}
 	jsonfile.writeFile(tLine.szJsonPath, tJson, function (err) {
