@@ -60,7 +60,7 @@ function GetUrl(szUrl, szJsonPath, nRetryNum){
 		const nNum = parseFloat(szText.match(/([0-9\.]+)/g)[1])
         console.dir(nNum)
 		var tJson = jsonfile.readFileSync(szJsonPath)
-		if (typeof(nNum) == 'number' && nNum > 1) {
+		if (typeof(nNum) == 'number' && nNum > 1 && nNum < 5000) {
 			tJson.push([Date.now() + 8 * 60 * 60 * 1000, nNum])
 			jsonfile.writeFile(szJsonPath, tJson, function (err) {
 				if (err) {
